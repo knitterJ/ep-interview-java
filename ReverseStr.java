@@ -25,7 +25,7 @@ public class ReverseStr{
   }
 }
 
-// What will happen if you remove "-1" from:
+// What happens if you remove "-1" from:
 // result = str.charAt(str.length()-1) + reverseStr(str.substring(0,str.length()-1));
 // Exactly this way:
 // result = str.charAt(str.length()-1) + reverseStr(str.substring(0,str.length()));
