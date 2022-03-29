@@ -1,32 +1,24 @@
-//Create a method to reverse a string using recursive solution.
-// pickles -> selkcip
-// jacob -> bocaj
+//A tree has two cycles of growth every year. First growth happens during the spring, when it doubles its height. The second one occurs during the summer when its height increases by 1 meter. The tree is planted on the beginning of spring and it's initial height is 1 meter. Find the height of the tree after N cycles of growth.
 
-public class ReverseStr{
+public class Tree {
 
-  public static String reverseStr(String str){
-    String result = str;
+  public static long calculateHeight(int numberOfCycles){
+     int height = 1;
+     for(int i = 1; i <= numberOfCycles; i++){
 
-    //last character of str
-    System.out.println(str.charAt(str.length()-1));
+       // summer (even)
+       if (i % 2 == 0) {
+         height++;
 
-    //All the characters in str apart from the last one
-    System.out.println(str.substring(0,str.length()-1));
-
-    if(str.length() > 1) {
-    // Store the last character of str and call function again, while passing the string without the last character. IT GOES ON AND ON IN A RECURSIVE WAY.
-    result = str.charAt(str.length()-1) + reverseStr(str.substring(0,str.length()-1));
-    }
-    return result;
+       // spring
+       } else {
+         height *= 2;
+       }
+     }
+     return height;
   }
 
   public static void main (String args[]){
-      System.out.println(reverseStr("bla"));
+      System.out.println(calculateHeight(4)); // four cycles - the tree double its height (2), grows a meter (3), again doubles (6), and in the end grows one more meter (7) 
   }
 }
-
-// What happens if you remove "-1" from:
-// result = str.charAt(str.length()-1) + reverseStr(str.substring(0,str.length()-1));
-// Exactly this way:
-// result = str.charAt(str.length()-1) + reverseStr(str.substring(0,str.length()));
-// ?
