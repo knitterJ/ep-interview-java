@@ -1,5 +1,3 @@
-package com.epam.rd.autotasks;
-
 public class GraduallyDecreasingCarousel extends DecrementingCarousel{
     private final CarouselRun carouselRun;
     private boolean isRunning;

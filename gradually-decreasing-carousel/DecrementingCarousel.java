@@ -1,5 +1,3 @@
-package com.epam.rd.autotasks;
-
 public class DecrementingCarousel {
     private final CarouselRun carouselRun;
     private int capacity;

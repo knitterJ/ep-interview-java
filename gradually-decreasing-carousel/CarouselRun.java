@@ -1,4 +1,3 @@
-package com.epam.rd.autotasks;
 
 import java.util.ArrayList;
 
