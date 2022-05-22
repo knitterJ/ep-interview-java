@@ -1,3 +1,6 @@
-OF COURSE NOT, YOU DUMBASS! Go back to the basics.
-Compiler doesn't allow private methods to leak out to other classes, but always remember...
-Access modifiers have nothing to do with security. In fact you can and should look at access modifiers as the reverse of security -- it is not to protect your data or algorithims, it is to protect people from the requirement to know about your data and algorithims. This is why the default modifier is package -- if they are working on the package they probably already need to know.
+OF COURSE NOT! Go back to the basics.
+
+- Compiler doesn't allow private methods to leak out to other classes, which means that you can't call such method from outside,
+- Access modifiers have nothing to do with security,
+- If a method can be made private, it should be made private (YAGNI: You aren't gonna need it - meaning not to add functionality until it is really necessary),
+- It’s valuable to know that you don't need look further than one class. If something goes wrong with a public method or a field, the culprit can be anywhere, and so in order to track down the bug, you may have to look at quite a lot of code.
