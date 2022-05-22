@@ -1,0 +1,3 @@
+OF COURSE NOT, YOU DUMBASS! Go back to the basics.
+Compiler doesn't allow private methods to leak out to other classes, but always remember...
+Access modifiers have nothing to do with security. In fact you can and should look at access modifiers as the reverse of security -- it is not to protect your data or algorithims, it is to protect people from the requirement to know about your data and algorithims. This is why the default modifier is package -- if they are working on the package they probably already need to know.
