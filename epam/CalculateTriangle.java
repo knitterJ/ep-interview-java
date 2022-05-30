@@ -1,5 +1,5 @@
-//Write a program which takes 3 points as the parameters of the triangle(in total 6 coordinates)
-//Then, the program defines whether such triangle exists. If it does, return to the end user the area of the triangle and its centroid. 
+//Write a program which takes 3 points as the parameters of the triangle (in total 6 coordinates)
+//Then, the program defines whether such triangle exists. If it does, return to the end user the area of the triangle and its centroid.
 
 class CalculateTriangle {
     Scanner scanner = new Scanner();
@@ -22,7 +22,6 @@ public Triangle(Point a, Point b, Point c) {
             this.ab + this.bc < this.ac ||
             this.ac + this.bc < this.ab)
         throw new IllegalArgumentException("The triangle can't exist!");
-
 
     Point vectorAB = new Point(b.getX() - a.getX(), b.getY() - a.getY());
     Point vectorAC = new Point(c.getX() - a.getX(), c.getY() - a.getY());
@@ -47,5 +46,5 @@ public double area() {
 
 public Point centroid() {
     return new Point((a.getX() + b.getX() + c.getX()) / 3, (a.getY() + b.getY() + c.getY()) / 3);
-}
+  }
 }
