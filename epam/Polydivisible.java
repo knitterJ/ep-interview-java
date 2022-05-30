@@ -38,8 +38,9 @@ public static boolean polydivisible(int number ){
 }
 
   public static void main (String args[]){
-      System.out.println(polydivisible(2220301));
-      //remember that the range of int type varies between -2147483648 to 2147483647 (2^31)
-
+      System.out.println(polydivisible(345654));
+      System.out.println(polydivisible(98765456));
+      //remember that the range of int type varies between -2147483648 to 2147483647 (2^31) and the above code is valid for the numbers written in based 10 system
+      System.out.println(polydivisible(111));
   }
 }

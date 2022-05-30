@@ -1,6 +1,7 @@
 // Write a program, which finds maximum value in the set of given numbers.
 // Based on the Scanner class, ask user to pass several (at least one) integer values.
-// Once the user is done, he's able to enter 0 (which is not taken into account in finding max value), which means end of the input in sequence.
+// Once the user is done, he's able to enter 0 (which is not taken into account in finding max value), which means end of the input in the sequence.
+// Then program finds maximum value in the given sequence and yields following message: "The max number in this sequence is <max>."
 // INPUT:
 // 2
 // 6
