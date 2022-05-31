@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <style>#map { height: 1080px; }</style>
+</head>
+<body>
+<div id="map"></div>
+<script th:inline="javascript">
+
+    const leafletmap = L.map('map').setView([52.95, 19.23], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(leafletmap);
+
+    const tracks = [[${tracks}]];
+    tracks.forEach(track => {
+        L.marker([track.x,track.y]).addTo(leafletmap)
+            .bindPopup(track.name)
+            .openPopup()
+            .on('mouseover', () => L.polygon([[track.x, track.y], [52.95, 19.53],]).addTo(leafletmap))
+    });
+
+</script>
+</body>
+</html>
