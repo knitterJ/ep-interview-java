@@ -3,7 +3,7 @@ public class MultithreadAppBlank {
     Thread thread1;
     Thread thread2;
 
-    public MultithreadApp() {
+    public MultithreadAppBlank() {
         thread1 = new Thread(new Runnable() {
             @Override
             public void run(){
@@ -11,11 +11,13 @@ public class MultithreadAppBlank {
             }
         });
 
-        thread2 = new Thread( () -> { System.out.println("Thread #2 is running");} );
+        // Task 1
+
     }
 
     public void startThreads() {
-        new Thread(thread1).start();
-        new Thread(thread2).start();
+        thread1.start();
+        // Task 2
+
     }
 }
