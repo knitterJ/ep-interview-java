@@ -1,0 +1,6 @@
+No, you can't override static method in Java. The compiler doesn't yield error in such case, but the method won't be overriden in the exact sense. It'll be hidden (process of method hiding).
+
+Follow up question:
+So which method will be hidden during the process of hiding?
+Method in the super class. Try it out on your own with the code in this folder. 
+"If a subclass defines a static method with the same signature as a static method in the super class, in such a case, the method in the subclass hides the one in the superclass."
