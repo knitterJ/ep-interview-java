@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Reports</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td>Countries with the biggest amount of vaccinated citizens</td>
+        <th:block th:each="heading : ${reportLargest}">
+            <td th:text="${heading[0]}"></td>
+                <td><span th:text="${heading[1]}"></span></td>
+<!--            <th th:text="${heading.iso_country}"></th>-->
+        </th:block>
+    </tr>
+    <tr>
+        <td>Countries with the smallest amount of vaccinated citizens</td>
+        <th:block th:each="heading : ${reportSmallest}">
+            <td><span th:text="${heading[0]}">[val]</span></td>
+            <td><span th:text="${heading[1]}"></span></td>
+            <!--            <th th:text="${heading.iso_country}"></th>-->
+        </th:block>
+    </tr>
+
+    <tr>
+        <td>Countries with the highest amount of infections per 100000 citizens</td>
+        <th:block th:each="heading : ${reportHighestInfections}">
+            <td><span th:text="${heading[0]}">[val]</span></td>
+            <td><span th:text="${#numbers.formatDecimal(heading[1],0,0)}"></span></td>
+            <!--            <th th:text="${heading.iso_country}"></th>-->
+        </th:block>
+    </tr>
+</table>
+
+</body>
+</html>
