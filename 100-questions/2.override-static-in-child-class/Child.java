@@ -8,9 +8,8 @@ public class Child extends Base {
 
     nothingSpecialMethod();
 
-    //still possible to invoke the method from the base class:
+    // still possible to invoke the method from the base class:
     // Base stdObj = new Child();
     // stdObj.nothingSpecialMethod();
-
   }
 }
