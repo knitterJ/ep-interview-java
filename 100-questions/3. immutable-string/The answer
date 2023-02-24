@@ -1,1 +1,24 @@
+Of course not!
 Immutable simply means unmodifiable or unchangeable.
+
+Why is it so?
+- String change may lead to security breaches
+- Thread Safety: Multiple threads can access the same string object without risking race condition of synchronization
+-
+
+Security: Since Strings are widely used in Java to store sensitive information such as passwords and usernames, it's important to ensure that the value of the string can't be changed after it has been created. If a string were mutable, an attacker could potentially modify its contents, which could lead to a security breach.
+
+Thread-Safety: Java's immutable Strings are inherently thread-safe. This means that multiple threads can access the same string object without any risk of race conditions or synchronization issues.
+
+Performance: String immutability allows Java to optimize String-related operations such as concatenation, substring, and comparison. Since strings can't be changed, Java can cache their hash codes, which makes comparisons faster. Additionally, Java can perform String concatenation using StringBuilder/StringBuffer, which are mutable and more efficient than concatenating Strings directly.
+
+Design: The immutability of Strings is consistent with Java's overall design philosophy, which promotes immutable objects as a way to simplify code and reduce the likelihood of bugs.
+
+
+Bezpieczeństwo: Ponieważ łańcuchy znaków są powszechnie używane w Javie do przechowywania informacji poufnych, takich jak hasła i nazwy użytkowników, ważne jest, aby zapewnić, że wartość łańcucha nie może być zmieniona po utworzeniu. Gdyby łańcuchy znaków były modyfikowalne, atakujący mógłby potencjalnie zmienić ich zawartość, co mogłoby prowadzić do naruszenia bezpieczeństwa.
+
+Bezpieczeństwo wątków: Niemodyfikowalne Stringi w Javie są odporne na problemy związane z synchronizacją wątków. Oznacza to, że wiele wątków może mieć dostęp do tego samego obiektu String bez ryzyka wyścigów (race conditions) czy innych problemów związanych z synchronizacją.
+
+Wydajność: Niemodyfikowalność Stringów pozwala na optymalizację operacji związanych z łańcuchami znaków, takich jak konkatenacja, podłańcuchy czy porównywanie. Ponieważ Stringi nie mogą być zmieniane, Java może zapamiętywać ich kody skrótu, co sprawia, że porównywanie jest szybsze. Ponadto, Java może wykonywać konkatenację Stringów za pomocą StringBuilder/StringBuffer, które są modyfikowalne i bardziej wydajne niż konkatenacja Stringów bezpośrednio.
+
+Projektowanie: Niemodyfikowalność Stringów jest zgodna z ogólną filozofią projektowania Javy, która promuje niemodyfikowalne obiekty jako sposób na uproszczenie kodu i zmniejszenie ryzyka błędów.
