@@ -4,3 +4,6 @@ OF COURSE NOT! Go back to the basics.
 - Access modifiers have nothing to do with security,
 - If a method can be made private, it should be made private (YAGNI: You aren't gonna need it - meaning not to add functionality until it is really necessary),
 - It’s valuable to know that you don't need look further than one class. If something goes wrong with a public method or a field, the culprit can be anywhere, and so in order to track down the bug, you may have to look at quite a lot of code.
+
+What was overriding in Java?
+Overriding refers to the ability of a subclass to provide its own implementation of a method that is already defined in its superclass. When a subclass overrides a method, it provides its own implementation of the method that is different from the implementation in the superclass.
