@@ -1,0 +1,154 @@
+Composition and inheritance are two fundamental concepts in object-oriented programming that allow for code reuse and the creation of complex software systems. The main difference between composition and inheritance is how objects are related to each other.
+
+Inheritance is a mechanism in which one class is derived from another class, allowing the derived class to inherit the methods and properties of the base class. The derived class can also add its own methods and properties or override the inherited ones. Inheritance is a "is-a" relationship, where the derived class is a specialized version of the base class. For example, a "Car" class can inherit from a "Vehicle" class, as a car is a type of vehicle.
+
+Composition, on the other hand, is a mechanism in which a class is composed of one or more objects of other classes, allowing the class to use the methods and properties of the composed objects. Composition is a "has-a" relationship, where the class has an object of another class as a member variable. For example, a "Car" class can have a "Engine" class as a member variable, as a car has an engine.
+
+Here are some key differences between composition and inheritance:
+
+    Inheritance is a mechanism for code reuse by deriving new classes from existing ones, while composition is a mechanism for code reuse by combining existing classes in new ways.
+    Inheritance creates a tight coupling between the derived class and the base class, while composition allows for looser coupling between objects.
+    Inheritance can lead to code duplication if multiple derived classes need to override the same methods, while composition avoids this problem by delegating responsibilities to composed objects.
+    Inheritance is more suitable for creating hierarchies of related classes with a shared interface, while composition is more suitable for creating complex objects from smaller, reusable components.
+
+
+Is composition related to dependency injection somehow?
+
+Yes, composition is related to dependency injection (DI) in that both techniques involve creating objects by combining simpler objects. Dependency injection is a specific way to achieve composition in which an object's dependencies are "injected" into it by an external entity, rather than the object itself creating and managing its dependencies directly.
+
+In DI, an object's dependencies are typically passed in as constructor arguments or set using setter methods. This allows the dependencies to be easily replaced or mocked for testing, and makes the code more modular and reusable.
+
+
+In this example, the Car class has an Engine object as a dependency, which is passed in as a constructor argument. This allows the Engine object to be easily swapped out for a different implementation, such as a mock Engine for testing. This is an example of composition, because the Car class is composed of an Engine object.
+
+public class Car {
+    private Engine engine;
+
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+
+    public void startEngine() {
+        engine.start();
+    }
+
+    public void stopEngine() {
+        engine.stop();
+    }
+}
+
+public static void main(String[] args) {
+    Engine engine1 = new Engine("V6");
+    Car car1 = new Car(engine1);
+
+    car1.startEngine();
+    car1.stopEngine();
+}
+
+
+public class Engine {
+    private String model;
+
+    public Engine(String model) {
+        this.model = model;
+    }
+
+    public void start() {
+        System.out.println("Starting " + model + " engine");
+    }
+
+    public void stop() {
+        System.out.println("Stopping " + model + " engine");
+    }
+}
+
+
+
+In this example, the Engine class has a model field that is set through its constructor, and it has start() and stop() methods that print messages indicating that the engine is starting or stopping. This class could be used as a dependency of the Car class, as shown in the previous example.
+
+But what's the difference between dependency injection and composition?
+
+
+The main difference between dependency injection and composition is who is responsible for creating and managing the objects that make up a system.
+
+In dependency injection, the responsibility for creating and managing objects is delegated to an external entity, typically a framework or container. This external entity is responsible for creating and configuring objects and their dependencies, and injecting those dependencies into the objects that need them. The objects themselves are typically passive and do not have much responsibility for managing their dependencies.
+
+In composition, on the other hand, the responsibility for creating and managing objects is handled by the objects themselves, or by some other external entity that is not specifically designed for dependency injection. In composition, objects create and manage their own dependencies, and are responsible for ensuring that those dependencies are properly initialized and configured.
+
+To illustrate this difference, consider the following example:
+
+public class Car {
+    private Engine engine;
+
+    public Car() {
+        engine = new Engine();
+    }
+
+    public void startEngine() {
+        engine.start();
+    }
+
+    public void stopEngine() {
+        engine.stop();
+    }
+}
+
+
+
+
+
+In this example, the Car class is responsible for creating an Engine object and storing it in its engine field. This is an example of composition, because the Car class is composed of an Engine object. The Car class is responsible for managing its own dependencies, and there is no external entity that is responsible for creating or injecting those dependencies.
+
+In contrast, here's an example of dependency injection using the Spring Framework in Java:
+
+public class Car {
+    private Engine engine;
+
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+
+    public void startEngine() {
+        engine.start();
+    }
+
+    public void stopEngine() {
+        engine.stop();
+    }
+}
+
+@Configuration
+public class AppConfig {
+    @Bean
+    public Engine engine() {
+        return new Engine();
+    }
+
+    @Bean
+    public Car car() {
+        return new Car(engine());
+    }
+}
+
+
+How do we know that Engine object was delegated to the Spring container?
+
+In the second example I provided, we can tell that the Engine object was delegated to the Spring container because it is created and configured by a Spring @Bean method in the AppConfig class. Specifically, the engine() method is annotated with @Bean, which tells Spring to treat it as a factory method for creating an Engine object. When the Spring container starts up, it will call this method and create an Engine object, which will be managed by the container.
+
+Later on, the car() method is also annotated with @Bean, which tells Spring to treat it as a factory method for creating a Car object. When the Spring container starts up, it will call this method and create a Car object, passing in the Engine object that was created by the engine() method.
+
+So, in this example, the Engine object is managed by the Spring container, and is created and configured by the engine() method in the AppConfig class. The Car object is also managed by the Spring container, and is created and configured by the car() method in the AppConfig class, which in turn injects the Engine object into the Car object.
+
+What are the advantages of such delegating?
+
+There are several advantages to delegating object creation and management to an external entity like a dependency injection framework:
+
+    Decoupling: By delegating object creation and management to an external entity, the classes in your codebase can be decoupled from each other, since they don't need to be aware of the details of how their dependencies are created or managed. This can make it easier to modify, test, and maintain your code.
+
+    Reusability: By managing object creation and management centrally, it's possible to reuse objects more easily across different parts of your codebase. For example, you might have several classes that depend on a single instance of a database connection object. By managing the creation and configuration of that object in a central location, you can reuse it more easily across your codebase.
+
+    Configurability: By delegating object creation and management to an external entity, it's possible to configure different objects or sets of objects for different environments or scenarios. For example, you might configure different database connection objects for development, testing, and production environments.
+
+    Testing: By using dependency injection, it's possible to substitute mock or stub objects for dependencies during testing, which can make it easier to write effective unit tests. This is because you can create test objects that mimic the behavior of real objects, but with controlled inputs and outputs.
+
+Overall, dependency injection and other techniques for delegating object creation and management can help make your code more modular, maintainable, and testable, and can improve the overall quality of your software.

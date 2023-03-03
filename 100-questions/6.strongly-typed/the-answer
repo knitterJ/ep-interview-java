@@ -1,0 +1,5 @@
+It means that every variable and expression in Java must have a specific data type, and that type is checked at COMPILE TIME to ensure that the program is using the correct types in the correct ways.
+
+For example, if you declare a variable to be of type int, you cannot assign it a value of type String without first converting the String to an int. This helps prevent errors at runtime and ensures that your code is more reliable and less error-prone.
+
+Java's strong typing also allows for more efficient code execution, as the compiler can optimize memory usage and ensure that the appropriate methods and functions are called for each data type.
