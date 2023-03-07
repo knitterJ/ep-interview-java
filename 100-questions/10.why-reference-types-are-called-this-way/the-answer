@@ -1,0 +1,5 @@
+Gdy tworzysz zmienną typu referencyjnego w Javie, de facto tworzysz referencję do obiektu w pamięci.
+Ta referencja wskazuje na konkretny obszar w pamięci, gdzie znajdują się właściwe dane obiektu.
+Operacje na obiektach, takie jak zmienianie wartości pól, nie wpłynie na wskazującą na ten obiekt referencje.
+
+In contrast, primitive data types, such as int, double, and boolean, hold the actual values of the data they represent, rather than references to memory locations.

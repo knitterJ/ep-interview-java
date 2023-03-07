@@ -1,0 +1,18 @@
+Primitive Data Types (Typy prymitywne)
+
+byte: 8-bit integer values
+short: 16-bit integer values
+int: 32-bit integer values
+long: 64-bit integer values
+float: single-precision floating-point values
+double: double-precision floating-point values
+boolean: true/false values
+char: single character values
+
+Reference/Object Data Types (Typy referencyjne/obiektowe)
+
+String: a sequence of characters
+Arrays: a collection of elements of the same type
+Classes: user-defined data types
+Interfaces: a set of methods that a class can implement
+Enumerations: a set of named values that are treated as constants. 

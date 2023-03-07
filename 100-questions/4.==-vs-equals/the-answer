@@ -1,29 +1,21 @@
-== REFERENCJA
 
-String str1 = "hello";
-String str2 = "hello";
+1. == Porównuje RERERENCJE obiektów, a nie ich wartości. Obrazkowo rzecz biorąc (strzałeczka między nazwą zmiennej a jej wartością)
+Oznacza to, że operator == zwraca true, jeśli porównywane referencje wskazują na ten sam obiekt (tą samą instancje) w pamięci, a false, jeśli wskazują na dwa różne obiekty, nawet jeśli ich wartości są identyczne.
 
-System.out.println(str1 == str2); // true, both references indicate the same object
+2. Czy dwa takie same int'y będą wskazywały na ten sam obiekt w pamięci?
+int czyli typ prymitywny nie będzie miał referencji
 
-W przykładzie powyżej, w momencie DEKLARACJI ZMIENNEJ str2, JVM sprawdza czy wartość "hello" istnieje już w StringPool'u.
-Jeśli tak, to tworzona jest wyłącznie nowa referencja do tego samego obiektu.
+3. Czym jest String intering?
 
-Przechowywanie tylko raz każdego z łańcucha znaków nazywane jest String Intering'iem.
+Przechowywanie w String Pool'u tylko raz każdego łańcucha znaków nazywane jest String Intering'iem.
 Po co się to robi? Wg teori i podręczników: w celu zaoszczędzenia pamięci, w szczególności gdy tworzone są duże ilości łańcuchów o identycznej wartości.
-
-
-check whether "==" both variables REFER to the same object
- "==" operator compares the value of two object references to see whether they refer to the same String instance.
-
-BUT string build from string literal will be added to something called the String constant pool, e.g. String s1 = "someString"; String s2 = "someString;" both s1 & s2 will share the same reference. s1 == s2 will return true.
-But if they were constructed via the String constructor, e.g. String s1 = new String("someString"); String s2 = new String("someString"); then they will not share the same reference. s1 == s2 will return false. –
 
 ------------------------------
 
-.equals(...) CZYSTA WARTOŚĆ
+.equals()
 
-compares what it is written (compares values)
+
 
 --------------------
 
-Operators are generally used for primitive type comparisons and thus == is used for memory address comparison and equals() method is used for comparing objects.
+Operators are generally used for primitive type comparisons and equals() method is used for comparing objects.
