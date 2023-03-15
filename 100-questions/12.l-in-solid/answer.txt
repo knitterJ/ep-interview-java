@@ -1,0 +1,78 @@
+Zasada podstawiania Liskov zakłada, że klasa dziedzicząca nie powinna zmieniać zachowania (wartości zwracanej, wyjątków rzuconych itp.) metod klasy bazowej. To znaczy nie wolno zmieniać typu i wartości zwaracanej metody w klasie dziedziczącej.
+
+Czy to oznacza, że overriding kłoci się z zasadą Liskov?
+
+Przesłanianie metod pozwala na dodanie nowych funkcjonalności do klasy dziedziczącej, ale zachowanie klasy bazowej musi pozostać nienaruszone.
+
+Na przykład, załóżmy, że w klasie bazowej mamy metodę calculateSum() która zwraca sumę dwóch liczb. W takim przypadku nie można jej nadpisać nową implementacją calculateSum(), która zwróci różnice dwóch liczb
+
+Dlaczego? Ponieważ semantyka metody z klasy bazowej mówi, że zwraca ona sumę dwóch liczb, a nowa implementacja w klasie dziedziczącej zwraca różnice dwóch liczb, co oznacza, że wprowadza ona dodatkowe wymaganie i zmienia zachowanie metody z klasy bazowej. To narusza zasadę podstawienia Liskov, ponieważ kod, który spodziewa się sumy dwóch liczb, może nie działać poprawnie, jeśli dostanie różnice dwóch liczb z klasy dziedziczącej.
+
+
+W jaki sposób rostrzygnąłby się konflikt, którą z metod wykorzystać w przypadku gdy nie zmieniono zachowania metody w klasie dziedziczącej? Metody klasy bazowej czy dziedziczonej?
+
+Jeśli klasa dziedzicząca definiuje metodę o takiej samej nazwie jak metoda z klasy bazowej, to metoda ta zastępuje (ang. overrides) metodę klasy bazowej. W tym przypadku, jeśli metoda z klasy dziedziczącej zostanie wywołana, to zostanie wykonana ta metoda, a nie metoda klasy bazowej.
+
+Jeśli jednak chcemy wywołać metodę klasy bazowej z metody dziedziczonej, to możemy to zrobić poprzez użycie słowa kluczowego super.
+
+Po co mielibyśmy wykorzystać nową implementacje z klasy dziedziczonej w miejsce klasy bazowej?
+
+Istnieją różne sytuacje, w których moglibyśmy chcieć wykorzystać nową implementację metody z klasy dziedziczonej w miejsce klasy bazowej. Oto kilka przykładów:
+
+    Rozszerzanie funkcjonalności - jeśli chcemy dodać nową funkcjonalność do klasy dziedziczącej, która nie jest dostępna w klasie bazowej, możemy to zrobić przez przesłanianie metody klasy bazowej. Wtedy, kiedy chcemy skorzystać z tej nowej funkcjonalności, możemy użyć obiektu klasy dziedziczącej w miejsce obiektu klasy bazowej.
+
+    Poprawianie błędów - jeśli metoda z klasy bazowej zawiera błąd lub jest nieefektywna, możemy napisać nową implementację tej metody w klasie dziedziczącej, która poprawia ten błąd lub jest bardziej wydajna. Wtedy, kiedy chcemy skorzystać z poprawionej metody, możemy użyć obiektu klasy dziedziczącej w miejsce obiektu klasy bazowej.
+
+    Dostosowanie do specyficznych wymagań - czasami wymagania projektowe lub funkcjonalne wymagają zmiany zachowania metody w klasie dziedziczącej, ale nie ma potrzeby zmieniania zachowania metody w klasie bazowej. Wtedy, kiedy chcemy skorzystać z tej specyficznej implementacji, możemy użyć obiektu klasy dziedziczącej w miejsce obiektu klasy bazowej.
+
+W każdym z tych przypadków ważne jest, aby nowa implementacja metody w klasie dziedziczącej nie zmieniała semantyki metody z klasy bazowej, aby nie naruszać zasady podstawienia Liskov.
+
+
+
+class Shape {
+    public double area() {
+        return 0;
+    }
+}
+
+class Rectangle extends Shape {
+    private double width;
+    private double height;
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    @Override
+    public double area() {
+        return width * height;
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape shape = new Rectangle(5, 10);
+        System.out.println("Area of rectangle: " + shape.area()); // Output: Area of rectangle: 50.0
+
+        shape = new Circle(5);
+        System.out.println("Area of circle: " + shape.area()); // Output: Area of circle: 78.53981633974483
+    }
+}
+
+W tym przykładzie klasa Shape jest klasą bazową, a klasy Rectangle i Circle dziedziczą po niej. Metoda area() w klasie Shape zwraca wartość 0, ale metoda ta jest nadpisywana przez klasy dziedziczące, aby zwracać wartość rzeczywistą dla prostokąta i koła.
+
+W metodzie main() tworzymy obiekty klasy Rectangle i Circle, ale zmienna shape ma typ Shape, czyli typ klasy bazowej. Następnie wywołujemy metodę area() dla obiektu shape, co powoduje wywołanie nadpisanej metody `

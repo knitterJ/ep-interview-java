@@ -5,3 +5,8 @@ So which method will be hidden during the process of hiding?
 Method in the super class. Try it out on your own by running Child.java
 --------------------
 "If a subclass defines a static method with the same signature as a static method in the super class, in such a case, the method in the subclass hides the one in the superclass."
+
+
+override in three words:
+
+new implementation of the same method in the extended class
